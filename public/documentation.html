@@ -12,6 +12,157 @@
     <p>I am building a server side web application for movies. Provides users with access to info about different
         movies, directors and genres. Users can also sign up and create a whole list of their favorite movies!
     </p>
-    
+
+<div>
+
+<h2>Features</h2>
+
+<table class="table">
+<thead>
+    <tr>
+        <th>Request</th>
+        <th>URL</th>
+        <th>Method</th>
+        <th>Query Parameters</th>
+        <th>Request body data format</th>
+        <th>Response body data format</th>
+    </tr>
+</thead>
+
+<tbody>
+    <tr>
+        <td>Return a list of all the movies to the user</td>
+        <td>/movies</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>None</td>
+        <td>A JSON object holding all the data about all the movies</td>
+    </tr>
+
+    <tr>
+        <td>Return data about a movie by title to the user</td>
+        <td>/movies/title</td>
+        <td>GET</td>
+        <td>:movieTitle</td>
+        <td>None</td>
+        <td>A JSON object holding all the data about a single movie. Example:<br>
+            {
+                title: 'The Fountain',
+                director: 'Darren Aronofsky',
+                genre: 'Drama'
+            }      
+        </td>
+    </tr>
+
+     <tr>
+        <td>Return data about a genre by name</td>
+        <td>movies/genre/genreName</td>
+        <td>GET</td>
+        <td>:genreName</td>
+        <td>None</td>
+        <td>A JSON object format containing movies belonging to a specific genre. Example: <br>
+            {
+                title: 'Forrest Gump',
+                director: 'Robert Zemeckis',
+                genre: 'Drama'
+
+            } <br>
+
+            {
+                title: 'Star Wars: Episode V - The Empire Strikes Back',
+                director: 'Irvin Kershner',
+                genre: 'Science-Fiction'
+            }
+
+        </td>
+    </tr>
+
+    <tr>
+        <td>Return data about a director by name</td>
+        <td>/movies/director/[director]</td>
+        <td>GET</td>
+        <td>:director</td>
+        <td>None</td>
+        <td>A JSON format data holding all the data about a director by name. Example:<br>
+            {
+                name: 'Darren Arnofsky',
+                bio: 'short bio here',
+                birth: '1969'
+            }
+        </td>
+
+    </tr>
+
+    <tr>
+        <td>Allow users to add a movie to their list of favorites</td>
+        <td>/favourite/add/[id]/[title]</td>
+        <td>POST</td>
+        <td>:add</td>
+        <td>A JSON format data containing all the new data about the movie to be added. Example:<br>
+             {
+
+                title: 'The Fountain',
+                director: 'Darren Aronofsky',
+                genre: 'Drama'
+                
+             }
+        </td>
+
+         <td>A JSON format data containing the newly added movie details. <br>
+            {
+                "id": 1,
+                "name": "John Doe",
+                "email": "johndoe@mail.com",
+                "favoriteMovies": [
+                    {
+                        title: 'Star Wars: Episode V - The Empire Strikes Back',
+                        director: 'Irvin Kershner',
+                        genre: 'Science-Fiction'
+                    }
+                ]
+                  }
+              
+        </td>
+
+    </tr>
+
+    <tr>
+        <td>Allow new users to register</td>
+        <td>/users/register</td>
+        <td>POST</td>
+        <td>:register</td>
+        <td>Data containing new user details</td>
+        <td>A text response indicating that the registeration was successful</td>
+    </tr>
+
+    <tr>
+        <td>Allow users to update their user info</td>
+        <td>/users/update/[id]</td>
+        <td>PUT</td>
+        <td>:id</td>
+        <td>Data containing changes to old profile</td>
+        <td>A text response indicating that the changes were successfully deployed</td>
+    </tr>
+
+    <tr>
+        <td>Allow users to remove a movie from their list of favorites</td>
+        <td>/favourite/delete/[id]/[title]</td>
+        <td>DELETE</td>
+        <td>:id, :title</td>
+        <td>None</td>
+        <td>An array without the removed movie</td>
+    </tr>
+
+    <tr>
+        <td>Allow existing users to deregister</td>
+        <td>/users/deregister/[id]</td>
+        <td>DELETE</td>
+        <td>:id</td>
+        <td>None</td>
+        <td>A text response indicating that the user profile was successfully deregistered</td>
+    </tr>  
+</tbody>
+</table>
+</div>  
 </body>
 </html>
