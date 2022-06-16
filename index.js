@@ -49,6 +49,8 @@ app.use(cors());
 // middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan('common'));
+
 
 let auth = require('./auth')(app);
 const passport = require('passport');
