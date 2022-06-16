@@ -23,7 +23,7 @@ const { check, validationResult } = require('express-validator');
 
 
 //cors implementation
-const cors = required('cors');
+const cors = require('cors');
 app.use(cors());
 
 
