@@ -16,6 +16,29 @@ const Users = Models.User;
 mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true, useUnifiedTopology: true });
 
 const app = express();
+const { check, validationResult } = require('express-validator');
+
+
+//cors implementation
+const cors = required('cors');
+let allowedOrigins = [
+    'http://localhost:8089',
+    'http://testsite.com'
+];
+
+app.use(cors({
+    origin: (origin, callback) => {
+        if(!origin) return callback(null,true);
+        if(allowedOrigins.indexOf(origin) === -1){
+            //if a specific origin isn't found on the list of allowed origins
+            let message = "The CORS policy for this application doesn't allow access from origin " + origin;
+            return callback(new Error(message ), false);
+        }
+        return callback(null,true);
+    }
+}));
+
+
 
 // middleware
 app.use(bodyParser.json());
@@ -116,15 +139,26 @@ app.get('/movies/directors/:Name', passport.authenticate('jwt', { session: false
 }*/
 
 // allow a user to register
-app.post('/users',  (req, res) => {
-    Users.findOne({ Username: req.body.Username })
+app.post('/users', [check('Username', 'Username is required.').isLength({min:5}),
+    check('Username', 'Username contains non alphanumeric characters - not allowed!').isAlphanumeric(),
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Email', 'Email does not appear to be valid').isEmail() ],  (req, res) => {
+    //check the validation object for any errors
+    let errors = validationResult(req);
+
+    if(!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
+
+    let hashedPassword = Users.hashPassword(req.body.Password);
+    Users.findOne({ Username: req.body.Username }) // search to see if a user with the requested username already exists
      .then((user) => {
          if (user) {
-             return res.status(400).send(req.body.Username + 'already exists!')
+             return res.status(400).send(req.body.Username + ' already exists!')
          } else {
              Users.create({
                  Username: req.body.Username,
-                 Password: req.body.Password,
+                 Password: hashedPassword,
                  Email: req.body.Email,
                  Birthday: req.body.Birthday,
              })
@@ -225,7 +259,10 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 
 
 
-app.listen(8089, () => console.log('listeing on port 8089!'));
+const port = process.env.PORT || 8080;
+app.listen( port, '0.0.0.0', () => {
+    console.log('Listening on Port ' + port);
+});
 
 
 
