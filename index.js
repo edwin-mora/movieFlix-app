@@ -14,7 +14,7 @@ const Users = Models.User;
 //allows mongoose to connect to the db
 //online
 
-mongoose.connect( process.env.CONNECTION_URI , {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect( process.env.CONNECTION_URI , { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 
