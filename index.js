@@ -49,9 +49,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 let auth = require('./auth')(app);
 const passport = require('passport');
+const { response } = require("express");
 require('./passport');
 
 
+// welcome message
+app.get('/', (req, res) => {
+    response.send('Welcome to my app!');
+});
 
 
 
