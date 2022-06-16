@@ -12,8 +12,11 @@ const Users = Models.User;
 
 
 //allows mongoose to connect to the db
+//online
 
-mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect( process.env.CONNECTION_URI , {useNewUrlParser: true, useUnifiedTopology: true });
+
+
 
 const app = express();
 const { check, validationResult } = require('express-validator');
@@ -259,11 +262,9 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 
 
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 5000;
 app.listen( port, '0.0.0.0', () => {
     console.log('Listening on Port ' + port);
 });
 
 
-
-//this willl replace the complete app.post(/users) function
