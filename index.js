@@ -3,6 +3,7 @@ const express = require("express"),
     bodyParser = require('body-parser'),
     uuid = require('uuid');
 
+const res = require('express/lib/response');
 //mongoose integration
 const mongoose = require('mongoose');
 const Models = require('./models.js');
@@ -19,12 +20,14 @@ mongoose.connect( process.env.CONNECTION_URI , { useNewUrlParser: true, useUnifi
 
 
 const app = express();
-const { check, validationResult } = require('express-validator');
 
 
 //cors implementation
 const cors = require('cors');
 app.use(cors());
+
+// import express
+const { check, validationResult } = require('express-validator');
 
 
 //let allowedOrigins = [
@@ -50,6 +53,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('common'));
+app.use(express.static('public'));
 
 
 let auth = require('./auth')(app);
