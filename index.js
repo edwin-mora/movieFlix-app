@@ -53,10 +53,10 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 
-let auth = require('./auth.js')(app);
-const passport = require('./passport.js');
+let auth = require('./auth')(app);
+const passport = require('passport');
 const { response } = require("express");
-require('./passport.js');
+require('./passport');
 
 
 // welcome message
