@@ -63,7 +63,7 @@ const { check, validationResult } = require('express-validator');
 mongoose.connect( process.env.CONNECTION_URI , { useNewUrlParser: true, useUnifiedTopology: true });
 
 // welcome message
-app.get('/', (req, res) => {
+app.get('/m', (req, res) => {
     response.send('Welcome to my app!');
 });
 
@@ -265,7 +265,7 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 
 
 
-const PORT = process.env.PORT || 8089;
-app.listen( PORT , () => {
-    console.log('Listening on Port ' + PORT);
+const port = process.env.port || 8089;
+app.listen( port , '0.0.0.0', () => {
+    console.log('Listening on Port ' + port);
 });
