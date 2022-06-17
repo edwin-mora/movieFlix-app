@@ -12,10 +12,7 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 
-//allows mongoose to connect to the db
-//online
 
-mongoose.connect( process.env.CONNECTION_URI , { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 
@@ -53,10 +50,15 @@ app.use(express.static('public'));
 
 const auth = require('./auth.js')(app);
 const passport = require('passport');
-require('./passport');
+require('./passport.js');
 const { response } = require("express");
 
 const { check, validationResult } = require('express-validator');
+
+//allows mongoose to connect to the db
+//online
+
+mongoose.connect( process.env.CONNECTION_URI , { useNewUrlParser: true, useUnifiedTopology: true });
 
 // welcome message
 app.get('/', (req, res) => {
