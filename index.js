@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
+const app = express();
 
 //mongoose integration
 const mongoose = require('mongoose');
@@ -17,9 +18,6 @@ const Users = Models.User;
 mongoose.connect( process.env.CONNECTION_URI , { useNewUrlParser: true, useUnifiedTopology: true });
 
 
-
-const app = express();
-const { check, validationResult } = require('express-validator');
 
 
 //cors implementation
@@ -53,16 +51,18 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 
-let auth = require('./auth')(app);
+const auth = require('./auth.js')(app);
 const passport = require('passport');
-const { response } = require("express");
 require('./passport');
+const { response } = require("express");
 
+const { check, validationResult } = require('express-validator');
 
 // welcome message
 app.get('/', (req, res) => {
     response.send('Welcome to my app!');
 });
+
 
 
 
