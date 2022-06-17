@@ -1,8 +1,9 @@
 const express = require("express");
+const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
-const app = express();
+const { check, validationResult } = require('express-validator');
 require('dotenv').config();
 
 
@@ -53,10 +54,10 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 
-const auth = require('./auth.js')(app);
+let auth = require('./auth.js')(app);
 const passport = require('passport');
 require('./passport.js');
-const { response } = require("express");
+
 
 const { check, validationResult } = require('express-validator');
 
