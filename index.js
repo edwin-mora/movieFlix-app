@@ -81,7 +81,7 @@ app.get('/users' , function (req, res) {
 });
 
 
-app.get('/movies', // passport.authenticate('jwt', { session: false }), 
+app.get('/movies', passport.authenticate('jwt', { session: false }), 
 (req, res) => {
     Movies.find()
      .then((movies) => {
@@ -263,7 +263,7 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 
 
 
-const port = process.env.PORT || port;
+const port = process.env.PORT || 5000;
 app.listen( port, '0.0.0.0', () => {
     console.log('Listening on Port ' + port);
 });
