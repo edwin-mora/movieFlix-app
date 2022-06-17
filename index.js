@@ -3,6 +3,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
 const app = express();
+const dotenv = require('dotenv');
+dotenv.conifg({ path: '.env' });
 
 //mongoose integration
 const mongoose = require('mongoose');
