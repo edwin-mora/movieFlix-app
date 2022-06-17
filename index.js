@@ -2,8 +2,10 @@ const express = require("express");
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
-const app = express();
 require('dotenv').config();
+
+
+
 
 
 //mongoose integration
@@ -56,6 +58,7 @@ require('./passport.js');
 const { response } = require("express");
 
 const { check, validationResult } = require('express-validator');
+const app = express();
 
 //allows mongoose to connect to the db
 //online
@@ -265,7 +268,7 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 
 
 
-const port = process.env.port || 8089;
-app.listen( port , '0.0.0.0', () => {
-    console.log('Listening on Port ' + port );
+const PORT = process.env.PORT || 8089;
+app.listen( PORT , () => {
+    console.log('Listening on Port ' + PORT);
 });
