@@ -1,33 +1,31 @@
+const dotenv = require('dontenv');
+dotenv.config()
+
 const express = require("express"),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     uuid = require('uuid');
-
-const res = require('express/lib/response');
-//mongoose integration
-const mongoose = require('mongoose');
-const Models = require('./models.js');
+    mongoose = require('mongoose'),
+    Models = require('./models.js');
 
 const Movies = Models.Movie;
 const Users = Models.User;
 
-
-//allows mongoose to connect to the db
-//online
-
-mongoose.connect( process.env.CONNECTION_URI , { useNewUrlParser: true, useUnifiedTopology: true });
-
-
-
 const app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //cors implementation
 const cors = require('cors');
 app.use(cors());
 
-// import express
-const { check, validationResult } = require('express-validator');
+//online
+
+mongoose.connect( process.env.CONNECTION_URI , { useNewUrlParser: true, useUnifiedTopology: true });
+
+
+// import expres
 
 
 //let allowedOrigins = [
@@ -50,16 +48,25 @@ const { check, validationResult } = require('express-validator');
 
 
 // middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(morgan('common'));
 app.use(express.static('public'));
 
 
-let auth = require('./auth')(app);
-const passport = require('passport');
-const { response } = require("express");
+let auth = require('./auth.js')(app);
+const passport = require('./passport.js');
 require('./passport');
+
+const { check, validationResult } = require('express-validator');
+
+app.use(morgan('common'));
+
+app.use(express.static('public'));
+
+
+//allows mongoose to connect to the db
+mongoose.connect( process.env.CONNECTION_URI , { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 
 // welcome message
