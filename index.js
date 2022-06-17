@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
+const app = express();
 require('dotenv').config();
 
 
@@ -58,7 +59,6 @@ require('./passport.js');
 const { response } = require("express");
 
 const { check, validationResult } = require('express-validator');
-const app = express();
 
 //allows mongoose to connect to the db
 //online
