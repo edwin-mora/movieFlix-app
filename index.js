@@ -1,7 +1,7 @@
-const express = require("express"),
-    morgan = require('morgan'),
-    bodyParser = require('body-parser'),
-    uuid = require('uuid');
+const express = require("express");
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const uuid = require('uuid');
 
 //mongoose integration
 const mongoose = require('mongoose');
