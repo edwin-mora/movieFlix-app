@@ -69,7 +69,7 @@ mongoose.connect( process.env.CONNECTION_URI , { useNewUrlParser: true, useUnifi
 
 
 
-app.get('/', (req, res) => {
+app.get('/', (req, response) => {
     response.send('Welcome to my app!');
 });
 
@@ -272,6 +272,7 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 
 
 const PORT = process.env.PORT || 8089;
-app.listen( PORT , () => {
+app.listen( PORT , '0.0.0.0', () => {
     console.log('Listening on Port ' + PORT);
 });
+
