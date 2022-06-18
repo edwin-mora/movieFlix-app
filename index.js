@@ -66,7 +66,10 @@ const { check, validationResult } = require('express-validator');
 mongoose.connect( process.env.CONNECTION_URI , { useNewUrlParser: true, useUnifiedTopology: true });
 
 // welcome message
-app.get('/app/', (req, res) => {
+
+
+
+app.get('/', (req, res) => {
     response.send('Welcome to my app!');
 });
 
