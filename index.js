@@ -27,10 +27,10 @@ const cors = require('cors');
 app.use(cors());
 
 
-let allowedOrigins = [
-   'http://localhost:1234',
-    'http://testsite.com'
-];
+//let allowedOrigins = [
+  // 'http://localhost:1234',
+    //'http://testsite.com'
+//];
 
  app.use(cors({
     origin: (origin, callback) => {
@@ -89,7 +89,8 @@ app.get('/users' , function (req, response) {
 });
 
 
-app.get('/movies', passport.authenticate('jwt', { session: false }), (req, response) => {
+app.get('/movies', //passport.authenticate('jwt', { session: false }), 
+(req, response) => {
     Movies.find()
      .then((movies) => {
          response.status(201).json(movies);
