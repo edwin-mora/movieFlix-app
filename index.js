@@ -27,10 +27,10 @@ const cors = require('cors');
 app.use(cors());
 
 
-let allowedOrigins = [
+/* let allowedOrigins = [
    'http://localhost:1234',
     'http://testsite.com'
-];
+]; */
 
  app.use(cors({
     origin: (origin, callback) => {
