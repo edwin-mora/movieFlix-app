@@ -154,7 +154,7 @@ app.get('/movies/directors/:Name', passport.authenticate('jwt', { session: false
 app.post('/users', [check('Username', 'Username is required.').isLength({min:5}),
     check('Username', 'Username contains non alphanumeric characters - not allowed!').isAlphanumeric(),
     check('Password', 'Password is required').not().isEmpty(),
-    check('Email', 'Email does not appear to be valid').isEmail() ],  (req, response) => {
+    check('Email', 'Email does not appear to be valid').isEmail() ], passport.authenticate('jwt', { session: false }), (req, response) => {
     //check the validation object for any errors
     let errors = validationResult(req);
 
