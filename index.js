@@ -186,7 +186,8 @@ app.post('/users', [check('Username', 'Username is required.').isLength({min:5})
 });
 
 // get a user by username
-app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (req, response) => {
+app.get('/users/:Username', //passport.authenticate('jwt', { session: false }), 
+(req, response) => {
     Users.findOne({ Username: req.params.Username })
      .then((user) => {
          response.json(user);
@@ -238,7 +239,8 @@ app.post('/users/:Username/movies/:MovieID', //passport.authenticate('jwt', { se
 });
 
 //allow user to delete movie from favorites list
-app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, response) => {
+app.delete('/users/:Username/movies/:MovieID', //passport.authenticate('jwt', { session: false }), 
+(req, response) => {
     Users.findOneAndUpdate({ Username: req.params.Username },
     {$pull : { FavoriteMovies: req.params.MovieID }},
     {new: true },
@@ -253,7 +255,8 @@ app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { se
 });
 
 // allow user to be deleted
-app.delete('/users/:Username', passport.authenticate('jwt', { session: false }), (req, response) => {
+app.delete('/users/:Username', //passport.authenticate('jwt', { session: false }), 
+(req, response) => {
     Users.findOneAndRemove({ Username: req.params.Username })
      .then((user) => {
          if (!user) {
