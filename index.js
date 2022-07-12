@@ -186,7 +186,8 @@ app.post('/users', [check('Username', 'Username is required.').isLength({min:5})
 });
 
 // get a user by username
-app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (req, response) => {
+app.get('/users/:Username', //passport.authenticate('jwt', { session: false }), 
+(req, response) => {
     Users.findOne({ Username: req.params.Username })
      .then((user) => {
          response.json(user);
