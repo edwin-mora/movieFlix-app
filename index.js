@@ -199,7 +199,8 @@ app.get('/users/:Username', //passport.authenticate('jwt', { session: false }),
 });
 
 // allow users to update their info
-app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, response) => {
+app.put('/users/:Username', //passport.authenticate('jwt', { session: false }), 
+(req, response) => {
     Users.findOneAndUpdate(
         { Username: req.params.Username },
         {
