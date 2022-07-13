@@ -51,6 +51,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('common'));
 app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 let auth = require('./auth.js')(app);
