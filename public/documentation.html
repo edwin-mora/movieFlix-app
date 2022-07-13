@@ -37,6 +37,26 @@
         <td>/movies/:Title</td>
         <td>GET</td>
         <td>A JSON object for individual movie passed in URL param</td>
+        <pre>
+              <code>
+                {
+                  Title: { type: String, required: true },
+                  Description: { type: String, required: true },
+                  Genre: {
+                    Name: String,
+                    Bio: String,
+                  },
+                  Director: {
+                    Name: String,
+                    Bio: String,
+                  },
+                  Actors: [String],
+                  ImagePath: [String],
+                  Featured: Boolean,
+                }
+    
+              </code>
+            </pre>
     </tr>
     <tr>
         <td>Return data about a genre by name</td>
