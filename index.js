@@ -23,8 +23,8 @@ const Users = Models.User;
 
 
 //cors implementation
-const cors = require('cors');
-app.use(cors());
+//const cors = require('cors');
+//app.use(cors());
 
 
 /* let allowedOrigins = [
