@@ -5,7 +5,18 @@ const bodyParser = require('body-parser');
 const uuid = require('uuid');
 require('dotenv').config();
 
-
+exports.handler = async (event) => {
+    const response = {
+        statusCode: 200,
+        headers: {
+            "Access-Control-Allow-Headers" : "Content-Type",
+            "Access-Control-Allow-Origin": "https://www.example.com", "localhost:1234"
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+        },
+        body: JSON.stringify('Hello from Lambda!'),
+    };
+    return response;
+};
 
 
 
