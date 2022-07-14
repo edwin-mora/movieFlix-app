@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const uuid = require('uuid');
 require('dotenv').config();
 
-exports.handler = async (event) => {
+/* exports.handler = async (event) => {
     const response = {
         statusCode: 200,
         headers: {
@@ -16,7 +16,7 @@ exports.handler = async (event) => {
         body: JSON.stringify('Hello from Lambda!'),
     };
     return response;
-};
+}; */
 
 
 
@@ -45,8 +45,8 @@ app.use(cors());
 
  let allowedOrigins = [
    'http://localhost:1234',
-    'http://testsite.com',
-    'https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg'
+    'http://testsite.com'
+
 ]; 
 
  /* app.use(cors({
