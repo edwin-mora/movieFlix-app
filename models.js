@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const bcrypt = require('bcrypt');
+header("Access-Control-Allow-Origin: *");
 
 // first example
 

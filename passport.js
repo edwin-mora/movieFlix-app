@@ -4,6 +4,7 @@ const passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy,
   Models = require('./models.js'),
   passportJWT = require('passport-jwt');
+  header("Access-Control-Allow-Origin: *");
 
 
 let Users = Models.User,
