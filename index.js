@@ -23,16 +23,16 @@ const Users = Models.User;
 
 
 //cors implementation
-//const cors = require('cors');
-//app.use(cors());
+const cors = require('cors');
+app.use(cors());
 
 
 /* let allowedOrigins = [
    'http://localhost:1234',
     'http://testsite.com'
-]; 
+]; */
 
- /* app.use(cors({
+ app.use(cors({
     origin: (origin, callback) => {
         if(!origin) return callback(null,true);
         if(allowedOrigins.indexOf(origin) === -1){
@@ -42,7 +42,7 @@ const Users = Models.User;
      }
     return callback(null,true);
  }
-})); */
+})); 
 
 
 
