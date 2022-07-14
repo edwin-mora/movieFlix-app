@@ -27,10 +27,11 @@ const cors = require('cors');
 app.use(cors());
 
 
-/* let allowedOrigins = [
+ let allowedOrigins = [
    'http://localhost:1234',
-    'http://testsite.com'
-]; */
+    'http://testsite.com',
+    'https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg'
+]; 
 
  /* app.use(cors({
     origin: (origin, callback) => {
