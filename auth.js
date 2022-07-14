@@ -1,7 +1,6 @@
 // endpoint fo rregistered users to log in
 
 const jwtSecret = 'your_jwt_secret'; //has to be the same key used in the JWTStrategy
-header("Access-Control-Allow-Origin: *");
 
 const jwt = require('jsonwebtoken'),
   passport = require('passport');
