@@ -45,7 +45,7 @@ app.use(cors());
 
  let allowedOrigins = [
    'http://localhost:1234',
-    'http://testsite.com', 'https://dashing-gumdrop-e44cc8.netlify.app/'
+    'http://testsite.com', 'https://dashing-gumdrop-e44cc8.netlify.app/', 'http://localhost:4200'
 
 ]; 
 
